@@ -9,14 +9,14 @@ public class Move : MonoBehaviour
     private readonly float _moveSpeed;
     private readonly Vector2 _jumpSpeed;
     private readonly float _maxSpeed;
-    public MoveController(float speed, float jump, Rigidbody2D rb, float max)
+    public Move(float speed, float jump, Rigidbody2D rb, float max)
     {
         _controller = rb;
         _moveSpeed = speed;
         _jumpSpeed = new Vector2(0, jump);
         _maxSpeed = max;
     }
-    public void Move(List<int> directions) 
+    public void move(List<int> directions) 
         // direction is 0:front, 1:back
     {
         _vector.x = 0;
