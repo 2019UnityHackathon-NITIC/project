@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Move.cs" />
+    <Compile Include="Assets\Script\Parameters.cs" />
     <Compile Include="Assets\Script\PlayerController.cs" />
     <None Include="Assets\BayatGames\Free Platform Game Assets\Readme.txt" />
     <Reference Include="Unity.Timeline.Editor">

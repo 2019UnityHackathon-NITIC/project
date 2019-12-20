@@ -4,15 +4,46 @@ using UnityEngine;
 
 public class Move : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+private readonly Rigidbody2D _controller;
+    private Vector2 _vector;
+    private readonly float _moveSpeed;
+    private readonly Vector2 _jumpSpeed;
+    private readonly float _maxSpeed;
+    public Move(float speed, float jump, Rigidbody2D rb, float max)
     {
-        
+        _controller = rb;
+        _moveSpeed = speed;
+        _jumpSpeed = new Vector2(0, jump);
+        _maxSpeed = max;
+    }
+    public void move(List<int> directions)
+    // direction is 0:front, 1:back
+    {
+        _vector.x = 0;
+        int front = directions.IndexOf(0);
+        int back = directions.IndexOf(1);
+        if (front != back && (front == -1 || back == -1))
+        {
+            if (front == -1)
+            {
+                if (_controller.velocity.x < -_maxSpeed) return;
+                _vector.x -= _moveSpeed;
+            }
+            else
+            {
+                if (_controller.velocity.x > _maxSpeed) return;
+                _vector.x += _moveSpeed;
+            }
+            _controller.velocity += _vector;
+        }
+        else _controller.velocity = new Vector2(0, _controller.velocity.y);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Jump(bool flag)
     {
-        
+        if (flag)
+        {
+            _controller.velocity += _jumpSpeed;
+        }
     }
 }
