@@ -9,5 +9,6 @@ Library/EditorInstance.json
 Library/ProtocolInstance.json
 *.log
 Library/assetDatabase3
-Library/metadeta
+Library/metadata
 Logs/
+Library/CrashedAssetImports.txt
