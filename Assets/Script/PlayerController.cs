@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour{
     private static bool _attackDirectionFlag; // true : front, false, back
     private string _state;
     private float timeFromLastShot = 0;
+    private Animator _animator;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpFlag = 1.5f;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour{
         _attackDirectionFlag = true;
         _state = "Stop";
         if (spawnPoint != null) PlayerController.spawnTrancelate = spawnPoint.transform.position;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -90,13 +92,17 @@ public class PlayerController : MonoBehaviour{
     {
         if (_isGround)
         {
-            if (d.IndexOf(0) == d.IndexOf(1) || (d.IndexOf(0) != -1 && d.IndexOf(1) != -1)) _state = "Stop";
-            else _state = "Walk";
+            if (d.IndexOf(0) != d.IndexOf(1) && (d.IndexOf(0) != -1 && d.IndexOf(1) != -1)) _animator.SetBool("Walk", true);
+            else _animator.SetBool("Walk", false);
         }
         else
         {
-            if (_rb.velocity.y > 0) _state = "Rise";
-            else _state = "Fall";
+            if (_rb.velocity.y > jumpFlag)
+            {
+                _animator.SetBool("Rise", true);
+                _animator.SetBool("Rise", false);
+            }
+            else ;
         }
     }
     void Goal()
