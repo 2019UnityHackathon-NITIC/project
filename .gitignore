@@ -1,0 +1,13 @@
+Gogs/
+Temp/
+.idea/
+*.cache
+.vs/
+Library/ShaderCache/
+Library/StateCache/
+Library/EditorInstance.json
+Library/ProtocolInstance.json
+*.log
+Library/assetDatabase3
+Library/metadeta
+Logs/
