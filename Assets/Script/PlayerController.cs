@@ -3,13 +3,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour{
     private Move _moveController;
-    static private Vector2 spawnTrancelate;
+    private static Vector2 _spawnTrancelate;
     private Rigidbody2D _rb;
     private bool _isGround;
     private bool _canShoot = true;
     private static bool _attackDirectionFlag; // true : front, false, back
-    private string _state;
-    private float timeFromLastShot = 0;
+    private float _timeFromLastShot = 0;
     private Animator _animator;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float moveSpeed;
@@ -27,8 +26,7 @@ public class PlayerController : MonoBehaviour{
         _rb = GetComponent<Rigidbody2D>();
         _moveController = new Move(moveSpeed, jumpSpeed, _rb, maxSpeed);
         _attackDirectionFlag = true;
-        _state = "Stop";
-        if (spawnPoint != null) PlayerController.spawnTrancelate = spawnPoint.transform.position;
+        if (spawnPoint != null) PlayerController._spawnTrancelate = spawnPoint.transform.position;
         _animator = GetComponent<Animator>();
     }
 
@@ -37,11 +35,11 @@ public class PlayerController : MonoBehaviour{
     {
         if (!_canShoot)
         {
-            timeFromLastShot += Time.deltaTime;
-            if (timeFromLastShot > shotDelay)
+            _timeFromLastShot += Time.deltaTime;
+            if (_timeFromLastShot > shotDelay)
             {
                 _canShoot = true;
-                timeFromLastShot = 0;
+                _timeFromLastShot = 0;
             }
         }
         if (Mathf.Abs(_rb.velocity.y) > jumpFlag) _isGround = false;
@@ -50,20 +48,20 @@ public class PlayerController : MonoBehaviour{
         if (Input.GetKey(KeyCode.D)) direction.Add(0);
         if (Input.GetKey(KeyCode.A)) direction.Add(1);
         DecideState(direction);
-        _moveController.move(direction);
+        _moveController.MoveCharacter(direction);
         if (Input.GetKey(KeyCode.Space)) _moveController.Jump(_isGround);
         if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
         else if (direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
         if (Input.GetKey(KeyCode.J) && _canShoot) Shoot();
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collider.gameObject.CompareTag("DeathZone"))
+        if (other.gameObject.CompareTag("DeathZone"))
         {
             Death();
         }
-        else if (collider.gameObject.CompareTag("Goal"))
+        else if (other.gameObject.CompareTag("Goal"))
         {
             Goal();
         }
@@ -78,7 +76,7 @@ public class PlayerController : MonoBehaviour{
     void Death()
     {
         Destroy(this.gameObject);
-        GameObject obj = (GameObject)Resources.Load("Prefab/Player"); Instantiate(obj, spawnTrancelate, Quaternion.identity); 
+        GameObject obj = (GameObject)Resources.Load("Prefab/Player"); Instantiate(obj, _spawnTrancelate, Quaternion.identity); 
     }
 
     void Shoot()
