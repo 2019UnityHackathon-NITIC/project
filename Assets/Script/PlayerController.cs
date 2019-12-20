@@ -92,18 +92,31 @@ public class PlayerController : MonoBehaviour{
     {
         if (_isGround)
         {
-            if (d.IndexOf(0) != d.IndexOf(1) && (d.IndexOf(0) != -1 && d.IndexOf(1) != -1)) _animator.SetBool("Walk", true);
+            if (d.IndexOf(0) != d.IndexOf(1) && ((d.IndexOf(0) != -1 || d.IndexOf(1) != -1)))
+            {
+                _animator.SetBool("Walk", true);
+                print("walking");
+            }
             else _animator.SetBool("Walk", false);
+            _animator.SetBool("Jump", false);
+            _animator.SetBool("Fall", false);
         }
         else
         {
             if (_rb.velocity.y > jumpFlag)
             {
-                _animator.SetBool("Rise", true);
-                _animator.SetBool("Rise", false);
+                _animator.SetBool("Jump", true);
+                _animator.SetBool("Fall", false);
             }
-            else ;
+            else
+            {
+                _animator.SetBool("Fall", true);
+                _animator.SetBool("Jump", false); 
+            }
+            _animator.SetBool("Walk", false);
         }
+        _animator.SetBool("Right", _attackDirectionFlag);
+        if (_attackDirectionFlag) print("right");
     }
     void Goal()
     {
