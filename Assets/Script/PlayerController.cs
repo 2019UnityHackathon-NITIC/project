@@ -100,6 +100,7 @@ public class PlayerController : MonoBehaviour{
 
     void Death()
     {
+        Destroy(GameObject.FindGameObjectWithTag("Inventory"));
         Instantiate(player, spawnPoint.transform.position, Quaternion.identity); 
         Destroy(this.gameObject);
     }
