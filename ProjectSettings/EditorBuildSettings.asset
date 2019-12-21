@@ -26,4 +26,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Stage.unity
     guid: 7b4d4293547384748ac41fcdbe9fcb7e
+  - enabled: 1
+    path: Assets/Scenes/EndingScenes/DirtyEnd.unity
+    guid: 24eaa22f2b780704dab8f3c1f78284de
+  - enabled: 1
+    path: Assets/Scenes/EndingScenes/DecentCleanEnd.unity
+    guid: d3bcb2ae85fdb2643aed9be08c338a3d
+  - enabled: 1
+    path: Assets/Scenes/EndingScenes/DecentDirtyEnd.unity
+    guid: 2e2719115c4a1ab428888644671de89a
+  - enabled: 1
+    path: Assets/Scenes/EndingScenes/DecentEnd.unity
+    guid: 3c67060a19acfdc42ade1a6c49ae5433
+  - enabled: 1
+    path: Assets/Scenes/EndingScenes/VeryCleanEnd.unity
+    guid: 70102943bc3dc3c41aa78741cdae1fee
   m_configObjects: {}
