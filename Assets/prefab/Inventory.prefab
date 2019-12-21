@@ -48,6 +48,7 @@ MonoBehaviour:
     type: 3}
   clean: 1
   panel: {fileID: 1705209702589047450}
+  clickSound: {fileID: 8300000, guid: 743053880b60c274d9217ca9314fde19, type: 3}
 --- !u!1 &1705209702589047450
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usedPoint: 5
+  clickSound: {fileID: 0}
 --- !u!1 &5064857693569427604
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usedPoint: 10
+  clickSound: {fileID: 8300000, guid: 743053880b60c274d9217ca9314fde19, type: 3}
 --- !u!1 &7195328493294810036
 GameObject:
   m_ObjectHideFlags: 0
