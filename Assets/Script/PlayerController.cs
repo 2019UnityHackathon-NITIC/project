@@ -93,7 +93,6 @@ public class PlayerController : MonoBehaviour{
             if (d.IndexOf(0) != d.IndexOf(1) && ((d.IndexOf(0) != -1 || d.IndexOf(1) != -1)))
             {
                 _animator.SetBool("Walk", true);
-                print("walking");
             }
             else _animator.SetBool("Walk", false);
             _animator.SetBool("Jump", false);
@@ -114,7 +113,6 @@ public class PlayerController : MonoBehaviour{
             _animator.SetBool("Walk", false);
         }
         _animator.SetBool("Right", _attackDirectionFlag);
-        if (_attackDirectionFlag) print("right");
     }
     void Goal()
     {
