@@ -1,9 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour{
     private Move _moveController;
-    private static Vector2 _spawnTrancelate;
     private Rigidbody2D _rb;
     private bool _isGround;
     private bool _canShoot = true;
@@ -16,11 +16,9 @@ public class PlayerController : MonoBehaviour{
     [SerializeField] private float jumpFlag = 1.5f;
     [SerializeField] private float maxSpeed = 2f;
     [SerializeField] private float shotDelay = 0.1f;
-    [SerializeField] private GameObject spawnPoint;
-    [SerializeField] private GameObject gun;
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private GameObject swapDirectionBullet;
+    private static GameObject spawnPoint;
     [SerializeField] private GameObject inventory;
+    [SerializeField] private GameObject player;
     private bool _goalFlag;
     public static bool ShoesFlag = false;
     private bool _shoesFlagManager = false;
@@ -31,7 +29,6 @@ public class PlayerController : MonoBehaviour{
         _rb = GetComponent<Rigidbody2D>();
         _moveController = new Move(jumpSpeed, _rb, maxSpeed);
         _attackDirectionFlag = true;
-        if (spawnPoint != null) PlayerController._spawnTrancelate = spawnPoint.transform.position;
         _animator = GetComponent<Animator>();
     }
 
@@ -79,37 +76,35 @@ public class PlayerController : MonoBehaviour{
         _inventoryFlag = !_inventoryFlag;
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("DeathZone"))
         {
             Death();
         }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Respawn"))
+        {
+            
+            spawnPoint = other.gameObject;
+        }
         else if (other.gameObject.CompareTag("Goal"))
         {
             Goal();
         }
-    }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Death();
-        }
-    }
-    void Death()
-    {
-        Destroy(this.gameObject);
-        GameObject obj = (GameObject)Resources.Load("Prefab/Player"); Instantiate(obj, _spawnTrancelate, Quaternion.identity); 
+        
     }
 
-    void Shoot()
+    void Death()
     {
-        Vector3 shooter = gun.transform.position;
-        if (_attackDirectionFlag) Instantiate(bullet, shooter, Quaternion.identity);
-        else Instantiate(swapDirectionBullet, shooter, Quaternion.identity);
-        _canShoot = false;
+        Instantiate(player, spawnPoint.transform.position, Quaternion.identity); 
+        Destroy(this.gameObject);
     }
+
+
     void DecideState(List<int> d)
     {
         if (_isGround)
