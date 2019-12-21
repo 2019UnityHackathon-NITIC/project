@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Move : MonoBehaviour
@@ -16,7 +15,7 @@ public class Move : MonoBehaviour
         _jumpSpeed = new Vector2(0, jump);
         _maxSpeed = max;
     }
-    public void move(List<int> directions) 
+    public void MoveCharacter(List<int> directions) 
         // direction is 0:front, 1:back
     {
         _vector.x = 0;
