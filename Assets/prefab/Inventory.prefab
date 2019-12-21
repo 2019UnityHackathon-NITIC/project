@@ -44,9 +44,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   usedPoint: 5
-  createObject: {fileID: 9009847724636177055, guid: 9f3e56850728e834aaf72df0cc99f104,
+  createObject: {fileID: 9009847724636177055, guid: 5747defa9eef31143a71bd521016323c,
     type: 3}
   clean: 1
+  panel: {fileID: 1705209702589047450}
+  clickSound: {fileID: 8300000, guid: 743053880b60c274d9217ca9314fde19, type: 3}
+--- !u!1 &534936921762464916
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556368077740028041}
+  - component: {fileID: 3034954182069877074}
+  m_Layer: 5
+  m_Name: LongGrassGenerater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1556368077740028041
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534936921762464916}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5064857693569427600}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3034954182069877074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534936921762464916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aa3d6036fdc348448cc345f39c4e7d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usedPoint: 20
+  createObject: {fileID: 5632901739033518826, guid: 7362a40f3c8168b459ba5c5e6495d3ec,
+    type: 3}
+  clean: 0
   panel: {fileID: 1705209702589047450}
   clickSound: {fileID: 8300000, guid: 743053880b60c274d9217ca9314fde19, type: 3}
 --- !u!1 &1705209702589047450
@@ -91,7 +145,7 @@ RectTransform:
   - {fileID: 5751331182263033459}
   - {fileID: 4747697162661527770}
   m_Father: {fileID: 5064857693569427600}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -613,6 +667,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 8386339560419788264}
+  - {fileID: 1556368077740028041}
   - {fileID: 4096832823702536860}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -891,7 +946,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 10
+  m_Text: 5
 --- !u!1 &6868967101489701922
 GameObject:
   m_ObjectHideFlags: 0
@@ -1291,6 +1346,17 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7000174837861762499}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3034954182069877074}
+        m_MethodName: BuyObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
