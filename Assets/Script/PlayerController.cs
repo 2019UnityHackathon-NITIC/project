@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour{
     private static GameObject spawnPoint;
     [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject player;
+    [SerializeField] private AudioClip _spawnPointSounds;
     private bool _goalFlag;
     public static bool ShoesFlag = false;
     private static bool _shoesFlagManager = false;
@@ -94,6 +95,8 @@ public class PlayerController : MonoBehaviour{
     {
         if (other.gameObject.CompareTag("Respawn"))
         {
+            if (other.gameObject == spawnPoint) return;
+            _audioSource.PlayOneShot(_spawnPointSounds);
             spawnPoint = other.gameObject;
         }
         else if (other.gameObject.CompareTag("Goal"))
