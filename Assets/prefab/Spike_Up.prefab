@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 7177399136017862431}
   - component: {fileID: 6818024680754934550}
+  - component: {fileID: 7998373564217881332}
   m_Layer: 0
   m_Name: Spike_Up
-  m_TagString: Untagged
+  m_TagString: DeathZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,3 +80,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &7998373564217881332
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8919241137413010866}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.06}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.16, y: 0}
+  - {x: 0.003616333, y: 0.21221548}
+  - {x: 0.16, y: 0}
