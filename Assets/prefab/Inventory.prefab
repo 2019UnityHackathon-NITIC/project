@@ -634,8 +634,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3101969af8c448b3874525f884e7d84c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  usedPoint: 5
-  clickSound: {fileID: 0}
+  usedPoint: 10
+  clickSound: {fileID: 8300000, guid: 743053880b60c274d9217ca9314fde19, type: 3}
 --- !u!1 &5064857693569427604
 GameObject:
   m_ObjectHideFlags: 0
