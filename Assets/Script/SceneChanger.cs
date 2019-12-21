@@ -7,6 +7,7 @@ public class SceneChanger : MonoBehaviour
 
     public void StartGame()
     {
+        Parameters.CleanEnergy = Parameters.UnCleanEnergy = Parameters.CleanEnergyUsed = Parameters.UnClearEnergyUsed = 0;
         SceneManager.LoadScene(mainScene);
     }
 
@@ -32,4 +33,3 @@ public class SceneChanger : MonoBehaviour
         }
     }
 }
-

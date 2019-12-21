@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private int usedPoint;
     [SerializeField] private GameObject createObject;
+    [SerializeField] private Sprite _sprite;
     [SerializeField] private bool clean = true;
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject itemPanel;
+    [SerializeField] private Image _box;
     private GameObject _clickedGameObject;
     private static bool createMode = false;
     [SerializeField] private AudioClip clickSound;
@@ -15,6 +19,8 @@ public class Inventory : MonoBehaviour
         if (Input.GetKey(KeyCode.Escape))
         {
             createMode = false;
+            itemPanel.SetActive(false);
+            PlayerController.onHand = null;
             Destroy(GameObject.FindGameObjectWithTag("Inventory"));
         }
         if (Input.GetMouseButtonDown(0) && createMode) 
@@ -36,6 +42,8 @@ public class Inventory : MonoBehaviour
                 Vector2 mousePos = Input.mousePosition;
                 Vector2 createPos = Camera.main.ScreenToWorldPoint(mousePos);
                 Instantiate(createObject, createPos, Quaternion.identity);
+                PlayerController.onHand = null;
+                itemPanel.SetActive(false);
                 createMode = false;
             }
         }
@@ -60,6 +68,9 @@ public class Inventory : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.PlayOneShot(clickSound);
         createMode = true;
+        PlayerController.onHand = createObject;
+        itemPanel.SetActive(true);
+        _box.sprite = _sprite;
         panel.SetActive(false);
     }
 }
