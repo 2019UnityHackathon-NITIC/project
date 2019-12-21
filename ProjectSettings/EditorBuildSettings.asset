@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScenes/OtakeTestScene.unity
     guid: 8378a74b14c73b14492a52d98627f8b9
+  - enabled: 1
+    path: Assets/Scenes/PlantLicence.unity
+    guid: 1f5c720dff8b6d0489e81075c9310a63
   m_configObjects: {}
