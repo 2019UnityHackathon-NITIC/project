@@ -19,3 +19,4 @@ Assembly-CSharp.csproj
 Assets/Plugins/Editor/JetBrains
 Assets/Plugins/Editor.meta
 Library/SceneVisibility.asset
+Library/SceneVisibilityState.asset
