@@ -124,6 +124,8 @@ MonoBehaviour:
   gun: {fileID: 0}
   bullet: {fileID: 0}
   swapDirectionBullet: {fileID: 0}
+  inventory: {fileID: 5064857693569427604, guid: db2835c3380e9e34581f007b49e167fe,
+    type: 3}
 --- !u!50 &6116164829943897806
 Rigidbody2D:
   serializedVersion: 4
