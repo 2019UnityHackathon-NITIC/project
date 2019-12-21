@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour{
     private float _timeFromLastShot = 0;
     private bool _inventoryFlag = false;
     private Animator _animator;
+    [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip miss;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpFlag = 1.5f;
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour{
     private bool _goalFlag;
     public static bool ShoesFlag = false;
     private static bool _shoesFlagManager = false;
+    [SerializeField] private AudioSource _audioSource;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -49,14 +53,17 @@ public class PlayerController : MonoBehaviour{
                 _timeFromLastShot = 0;
             }
         }
-        if (Mathf.Abs(_rb.velocity.y) > jumpFlag) _isGround = false;
-        else _isGround = true;
+        _isGround = !(Mathf.Abs(_rb.velocity.y) > jumpFlag);
         List<int> direction = new List<int> { };
         if (Input.GetKey(KeyCode.D)) direction.Add(0);
         if (Input.GetKey(KeyCode.A)) direction.Add(1);
         DecideState(direction);
         _moveController.MoveCharacter(direction, moveSpeed);
-        if (Input.GetKey(KeyCode.Space)) _moveController.Jump(_isGround);
+        if (Input.GetKey(KeyCode.Space))
+        {
+            _moveController.Jump(_isGround);
+            if (_isGround) _audioSource.PlayOneShot(jump);
+        }
         if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
         else if (direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
         if (Input.GetKeyDown(KeyCode.E)) OpenInventory();
@@ -72,7 +79,6 @@ public class PlayerController : MonoBehaviour{
         {
             Instantiate(inventory);
         }
-
         _inventoryFlag = !_inventoryFlag;
     }
 
@@ -100,6 +106,7 @@ public class PlayerController : MonoBehaviour{
 
     void Death()
     {
+        _audioSource.PlayOneShot(miss);
         Destroy(GameObject.FindGameObjectWithTag("Inventory"));
         Instantiate(player, spawnPoint.transform.position, Quaternion.identity); 
         Destroy(this.gameObject);

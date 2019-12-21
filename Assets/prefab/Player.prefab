@@ -199,6 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe24b913743dd94192d1258345678e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jump: {fileID: 8300000, guid: f44824203394c6d4eb91886beb71e018, type: 3}
+  miss: {fileID: 8300000, guid: 5b905fe913c2cae4c9045ec38840fbda, type: 3}
   jumpSpeed: 10
   moveSpeed: 5
   jumpFlag: 0.001
@@ -207,6 +209,8 @@ MonoBehaviour:
   inventory: {fileID: 5064857693569427604, guid: db2835c3380e9e34581f007b49e167fe,
     type: 3}
   player: {fileID: 5009487930359144761}
+  _audioSource: {fileID: 2592289455684932445, guid: a0d944242aaa7e047bc427ac48b81e70,
+    type: 3}
 --- !u!50 &4010620731477800897
 Rigidbody2D:
   serializedVersion: 4
