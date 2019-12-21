@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour{
     private bool _canShoot = true;
     private static bool _attackDirectionFlag; // true : front, false, back
     private float _timeFromLastShot = 0;
+    private bool _inventoryFlag = false;
     private Animator _animator;
     [SerializeField] private float jumpSpeed;
     [SerializeField] private float moveSpeed;
@@ -19,7 +20,9 @@ public class PlayerController : MonoBehaviour{
     [SerializeField] private GameObject gun;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject swapDirectionBullet;
+    [SerializeField] private GameObject inventory;
     private bool _goalFlag;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,7 +55,21 @@ public class PlayerController : MonoBehaviour{
         if (Input.GetKey(KeyCode.Space)) _moveController.Jump(_isGround);
         if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
         else if (direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
-        if (Input.GetKey(KeyCode.J) && _canShoot) Shoot();
+        if (Input.GetKeyDown(KeyCode.E)) OpenInventory();
+    }
+
+    void OpenInventory()
+    {
+        if (_inventoryFlag)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Inventory"));
+        }
+        else
+        {
+            Instantiate(inventory);
+        }
+
+        _inventoryFlag = !_inventoryFlag;
     }
 
     void OnTriggerEnter2D(Collider2D other)
