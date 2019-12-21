@@ -46,14 +46,12 @@ public class Inventory : MonoBehaviour
     {
         if (clean && Parameters.CleanEnergy >= usedPoint)
         {
-            Parameters.CleanEnergy -= usedPoint;
-            Parameters.CleanEnergyUsed += usedPoint;
+
             Create();
         }
         else if ((!clean) && Parameters.UnCleanEnergy >= usedPoint)
         {
-            Parameters.UnCleanEnergy -= usedPoint;
-            Parameters.UnClearEnergyUsed += usedPoint;
+
             Create();
         }
     }

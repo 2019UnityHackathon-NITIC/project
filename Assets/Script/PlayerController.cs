@@ -22,12 +22,14 @@ public class PlayerController : MonoBehaviour{
     [SerializeField] private GameObject swapDirectionBullet;
     [SerializeField] private GameObject inventory;
     private bool _goalFlag;
+    public static bool ShoesFlag = false;
+    private bool _shoesFlagManager = false;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _moveController = new Move(moveSpeed, jumpSpeed, _rb, maxSpeed);
+        _moveController = new Move(jumpSpeed, _rb, maxSpeed);
         _attackDirectionFlag = true;
         if (spawnPoint != null) PlayerController._spawnTrancelate = spawnPoint.transform.position;
         _animator = GetComponent<Animator>();
@@ -36,6 +38,11 @@ public class PlayerController : MonoBehaviour{
     // Update is called once per frame
     void Update()
     {
+        if (ShoesFlag != _shoesFlagManager)
+        {
+            moveSpeed *= 1.5f;
+            _shoesFlagManager = true;
+        }
         if (!_canShoot)
         {
             _timeFromLastShot += Time.deltaTime;
@@ -51,7 +58,7 @@ public class PlayerController : MonoBehaviour{
         if (Input.GetKey(KeyCode.D)) direction.Add(0);
         if (Input.GetKey(KeyCode.A)) direction.Add(1);
         DecideState(direction);
-        _moveController.MoveCharacter(direction);
+        _moveController.MoveCharacter(direction, moveSpeed);
         if (Input.GetKey(KeyCode.Space)) _moveController.Jump(_isGround);
         if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
         else if (direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
