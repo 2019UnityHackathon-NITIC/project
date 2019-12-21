@@ -94,7 +94,6 @@ public class PlayerController : MonoBehaviour{
     {
         if (other.gameObject.CompareTag("Respawn"))
         {
-            
             spawnPoint = other.gameObject;
         }
         else if (other.gameObject.CompareTag("Goal"))
@@ -144,8 +143,6 @@ public class PlayerController : MonoBehaviour{
     void Goal()
     {
         if (_goalFlag) return;
-        GameObject obj = (GameObject)Resources.Load("Prefab/CLEAR");
-        Instantiate(obj, gameObject.transform.position, Quaternion.identity);
-        _goalFlag = true;
+        DecideEnding.DecideScenePlayEnding();
     }
 }

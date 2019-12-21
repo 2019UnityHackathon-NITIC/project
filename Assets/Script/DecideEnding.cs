@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-
-public class DecideEnding : MonoBehaviour
-{
+﻿public static class DecideEnding {
 
     public static void DecideScenePlayEnding()
     {
