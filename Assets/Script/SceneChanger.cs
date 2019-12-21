@@ -3,12 +3,18 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     [SerializeField] private string mainScene = "SampleScene";
-    private GameObject _clickedGameObject; 
+    private GameObject _clickedGameObject;
+
     public void StartGame()
-    { 
+    {
         SceneManager.LoadScene(mainScene);
     }
-    
+
+    public static void ChangeScene(string SceneName)
+    {
+        SceneManager.LoadScene(SceneName);
+    }
+
     // Update is called once per frame
     void Update()
     {

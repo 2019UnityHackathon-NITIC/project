@@ -15,3 +15,5 @@ Library/CrashedAssetImports.txt
 Library/PackageCache
 Library/ScriptAssemblies
 Library/CurrentLayout.dwlt
+Assembly-CSharp.csproj
+Assets/Plugins/Editor/JetBrains
