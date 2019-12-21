@@ -5,13 +5,19 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int usedPoint;
     [SerializeField] private GameObject createObject;
     [SerializeField] private bool clean = true;
+    [SerializeField] private GameObject panel;
     private GameObject _clickedGameObject;
     private static bool createMode = false;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) 
+        if (Input.GetKey(KeyCode.Escape))
         {
-            if (createMode && Camera.main != null)
+            createMode = false;
+            Destroy(GameObject.FindGameObjectWithTag("Inventory"));
+        }
+        if (Input.GetMouseButtonDown(0) && createMode) 
+        {
+            if (Camera.main != null)
             {
                 if (clean)
                 {
@@ -29,24 +35,15 @@ public class Inventory : MonoBehaviour
                 Instantiate(createObject, createPos, Quaternion.identity);
                 createMode = false;
             }
-            else if (Camera.main != null) 
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition); 
-                RaycastHit2D hit2d = Physics2D.Raycast((Vector2)ray.origin, (Vector2)ray.direction);
-                if (hit2d) {
-                    _clickedGameObject = hit2d.transform.gameObject; 
-                    if (_clickedGameObject == this.gameObject) BuyObject();
-                }
-            }
-            else if (Input.GetKey(KeyCode.Escape)) createMode = false;
+                
         }
     }
-
-    void BuyObject()
+    
+    
+    public void BuyObject()
     {
         if (clean && Parameters.CleanEnergy >= usedPoint)
         {
-
             Create();
         }
         else if ((!clean) && Parameters.UnCleanEnergy >= usedPoint)
@@ -59,6 +56,7 @@ public class Inventory : MonoBehaviour
     void Create()
     {
         createMode = true;
+        panel.SetActive(false);
     }
 }
         
