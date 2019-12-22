@@ -46,15 +46,7 @@ public class PlayerController : MonoBehaviour{
             moveSpeed *= 1.5f;
             _shoesFlagManager = true;
         }
-        if (!_canShoot)
-        {
-            _timeFromLastShot += Time.deltaTime;
-            if (_timeFromLastShot > shotDelay)
-            {
-                _canShoot = true;
-                _timeFromLastShot = 0;
-            }
-        }
+
         _isGround = !(Mathf.Abs(_rb.velocity.y) > jumpFlag);
         List<int> direction = new List<int> { };
         if (Input.GetKey(KeyCode.D)) direction.Add(0);
@@ -68,7 +60,7 @@ public class PlayerController : MonoBehaviour{
         }
         if (direction.IndexOf(1) != -1 && direction.IndexOf(0) == -1) _attackDirectionFlag = false;
         else if (direction.IndexOf(0) != -1 && direction.IndexOf(1) == -1) _attackDirectionFlag = true;
-        if (Input.GetKeyDown(KeyCode.E)) OpenInventory();
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.P)) OpenInventory();
     }
 
     void OpenInventory()
@@ -88,6 +80,7 @@ public class PlayerController : MonoBehaviour{
     {
         if (other.gameObject.CompareTag("DeathZone"))
         {
+            print(other.gameObject.name);
             Death();
         }
     }

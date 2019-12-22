@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8481712619511011749}
   - component: {fileID: 3555798664251258565}
   - component: {fileID: 1687342219892450781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: gaol_door
   m_TagString: Goal
   m_Icon: {fileID: 0}
