@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7177399136017862431}
   - component: {fileID: 6818024680754934550}
   - component: {fileID: 7998373564217881332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spike_Up
   m_TagString: DeathZone
   m_Icon: {fileID: 0}

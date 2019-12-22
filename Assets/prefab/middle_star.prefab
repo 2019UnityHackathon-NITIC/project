@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2980064651832531370}
   - component: {fileID: 5385086693253664398}
   - component: {fileID: 7504341868114457793}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: middle_star
   m_TagString: Respawn
   m_Icon: {fileID: 0}
