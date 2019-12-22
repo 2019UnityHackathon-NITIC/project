@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour{
     private float _timeFromLastShot = 0;
     private bool _inventoryFlag = false;
     private Animator _animator;
-    public static GameObject onHand;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip miss;
     [SerializeField] private float jumpSpeed;
@@ -23,9 +22,8 @@ public class PlayerController : MonoBehaviour{
     [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject player;
     [SerializeField] private AudioClip _spawnPointSounds;
-    private bool _goalFlag;
     public static bool ShoesFlag = false;
-    private static bool _shoesFlagManager = false;
+    public static bool _shoesFlagManager = false;
     [SerializeField] private AudioSource _audioSource;
     
 
@@ -139,7 +137,6 @@ public class PlayerController : MonoBehaviour{
     }
     void Goal()
     {
-        if (_goalFlag) return;
         DecideEnding.DecideScenePlayEnding();
     }
 }
