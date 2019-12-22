@@ -6,12 +6,9 @@ public class PlayerController2 : MonoBehaviour{
     private Move _moveController;
     private Rigidbody2D _rb;
     private bool _isGround;
-    private bool _canShoot = true;
     private static bool _attackDirectionFlag; // true : front, false, back
-    private float _timeFromLastShot = 0;
     private bool _inventoryFlag = false;
     private Animator _animator;
-    public static GameObject onHand;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip miss;
     [SerializeField] private float jumpSpeed;
@@ -23,9 +20,8 @@ public class PlayerController2 : MonoBehaviour{
     [SerializeField] private GameObject inventory;
     [SerializeField] private GameObject player;
     [SerializeField] private AudioClip _spawnPointSounds;
-    private bool _goalFlag;
     public static bool ShoesFlag = false;
-    private static bool _shoesFlagManager = false;
+    public static bool _shoesFlagManager = false;
     [SerializeField] private AudioSource _audioSource;
     
 
@@ -45,15 +41,6 @@ public class PlayerController2 : MonoBehaviour{
         {
             moveSpeed *= 1.5f;
             _shoesFlagManager = true;
-        }
-        if (!_canShoot)
-        {
-            _timeFromLastShot += Time.deltaTime;
-            if (_timeFromLastShot > shotDelay)
-            {
-                _canShoot = true;
-                _timeFromLastShot = 0;
-            }
         }
         _isGround = !(Mathf.Abs(_rb.velocity.y) > jumpFlag);
         List<int> direction = new List<int> { };
@@ -145,7 +132,6 @@ public class PlayerController2 : MonoBehaviour{
     }
     void Goal()
     {
-        if (_goalFlag) return;
         DecideEnding.DecideScenePlayEnding();
     }
 }

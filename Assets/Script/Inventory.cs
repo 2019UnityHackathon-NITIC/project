@@ -20,7 +20,6 @@ public class Inventory : MonoBehaviour
         {
             createMode = false;
             itemPanel.SetActive(false);
-            PlayerController.onHand = null;
             Destroy(GameObject.FindGameObjectWithTag("Inventory"));
         }
         if (Input.GetMouseButtonDown(0) && createMode) 
@@ -42,7 +41,6 @@ public class Inventory : MonoBehaviour
                 Vector2 mousePos = Input.mousePosition;
                 Vector2 createPos = Camera.main.ScreenToWorldPoint(mousePos);
                 Instantiate(createObject, createPos, Quaternion.identity);
-                PlayerController.onHand = null;
                 itemPanel.SetActive(false);
                 createMode = false;
             }
@@ -68,7 +66,6 @@ public class Inventory : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.PlayOneShot(clickSound);
         createMode = true;
-        PlayerController.onHand = createObject;
         itemPanel.SetActive(true);
         _box.sprite = _sprite;
         panel.SetActive(false);

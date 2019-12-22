@@ -8,6 +8,7 @@ public class SceneChanger : MonoBehaviour
     public void StartGame()
     {
         Parameters.CleanEnergy = Parameters.UnCleanEnergy = Parameters.CleanEnergyUsed = Parameters.UnClearEnergyUsed = 0;
+        PlayerController.ShoesFlag = PlayerController2.ShoesFlag = PlayerController._shoesFlagManager = PlayerController2._shoesFlagManager = false;
         SceneManager.LoadScene(mainScene);
     }
 
